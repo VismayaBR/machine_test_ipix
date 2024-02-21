@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "864185885257",
+    "project_id": "ipix-machinetest",
+    "storage_bucket": "ipix-machinetest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864185885257:android:957c6bf2a17e9f1e8a9598",
+        "android_client_info": {
+          "package_name": "com.example.machine_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACCPf94Xnr0JiP5uXnPGaSs1_YaZ4YsPs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
