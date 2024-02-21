@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:machine_test/Login.dart';
 import 'package:machine_test/constants/colors.dart';
 
 
@@ -34,10 +35,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> gotoLogin() async {
     await Future.delayed(const Duration(seconds: 3));
-    // Navigator.pushReplacement(
-    //     context,
-    //     // MaterialPageRoute(
-    //     //   builder: (context) =>Login(),
-    //     // ));
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>Login(),
+        ));
   }
 }

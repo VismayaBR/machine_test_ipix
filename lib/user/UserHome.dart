@@ -76,7 +76,7 @@ class _UserHomeState extends State<UserHome> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: selectedCategory == categories[index]
                                     ? customBlue
-                                    : const Color.fromARGB(255, 237, 207, 161),
+                                    :  maincolor,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),

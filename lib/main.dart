@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:machine_test/Login.dart';
+import 'package:machine_test/Splash.dart';
 import 'package:machine_test/firebase_options.dart';
 
 Future<void> main() async {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
             appBarTheme:
                 const AppBarTheme(color: Colors.transparent, elevation: 0),
           ),
-          home: Login()),
+          home: SplashScreen()),
           designSize: Size(390, 844),
     );
   }

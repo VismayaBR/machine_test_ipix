@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:machine_test/constants/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -45,62 +46,82 @@ class _CartState extends State<Cart> {
     }
   }
 
- @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Text('Your Cart'),
-    ),
-    body: ListView.builder(
-      itemCount: cartItems.length,
-      itemBuilder: (context, index) {
-        // Extract data from document snapshot
-        String productId = cartItems[index]['product'];
-        // String userId = cartItems[index]['userId'];
-
-        // Display the cart item
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GestureDetector(
-            onTap: () {
-              _removeItemFromCart(index);
-            },
-            child: Container(
-              color: maincolor,
-              child: ListTile(
-                trailing: InkWell(
-                  onTap: (){
-                    _removeItemFromCart(index);
-                  },
-                  child: Icon(Icons.clear,size: 15,)),
-                title: Text('$productId'),
-                // subtitle: Text('User ID: $userId'),
-              ),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Your Cart'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: cartItems.length,
+              itemBuilder: (context, index) {
+                // Extract data from document snapshot
+                String productId = cartItems[index]['product'];
+                // String userId = cartItems[index]['userId'];
+            
+                // Display the cart item
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      _removeItemFromCart(index);
+                    },
+                    child: Container(
+                      color: maincolor,
+                      child: ListTile(
+                        trailing: InkWell(
+                            onTap: () {
+                              _removeItemFromCart(index);
+                            },
+                            child: Icon(
+                              Icons.clear,
+                              size: 15,
+                            )),
+                        title: Text('$productId'),
+                        // subtitle: Text('User ID: $userId'),
+                      ),
+                    ),
+                  ),
+                );
+              },
             ),
           ),
-        );
-      },
-    ),
-  );
-}
-
-void _removeItemFromCart(int index) async {
-  // Get the document ID of the item to be removed
-  String docId = cartItems[index].id;
-
-  try {
-    // Remove the item from the Firestore collection
-    await FirebaseFirestore.instance.collection('cart').doc(docId).delete();
-
-    // Update the local state to remove the item from the cartItems list
-    setState(() {
-      cartItems.removeAt(index);
-    });
-  } catch (e) {
-    print('Error removing item from cart: $e');
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: 50,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10), color: customBlue),
+              child: Center(
+                  child: Text(
+                'Place Order',
+                style: GoogleFonts.poppins(fontSize: 15, color: white),
+              )),
+            ),
+          ),
+        ],
+      ),
+    );
   }
-}
 
+  void _removeItemFromCart(int index) async {
+    // Get the document ID of the item to be removed
+    String docId = cartItems[index].id;
 
+    try {
+      // Remove the item from the Firestore collection
+      await FirebaseFirestore.instance.collection('cart').doc(docId).delete();
 
+      // Update the local state to remove the item from the cartItems list
+      setState(() {
+        cartItems.removeAt(index);
+      });
+    } catch (e) {
+      print('Error removing item from cart: $e');
+    }
+  }
 }
