@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:machine_test/constants/colors.dart';
@@ -61,40 +62,7 @@ class _UserSignupState extends State<UserSignup> {
                   SizedBox(
                     height: 50.h,
                   ),
-                  const Align(
-                    alignment: Alignment.bottomLeft,
-                    child: AppText(
-                        text: "Enter Username",
-                        weight: FontWeight.w500,
-                        size: 16,
-                        textcolor: customBalck),
-                  ),
-                  CustomTextField(
-                      //Custom Textfield..............
-                      hint: "Enter Username",
-                      controller: username,
-                      validator: (value) {
-                        if (value!.isEmpty || value == null) {
-                          return "enter username";  // validation............
-                        }
-                      }),
-                      CustomTextField(
-                      //Custom Textfield..............
-                      hint: "Enter location",
-                      controller: location,
-                      validator: (value) {
-                        if (value!.isEmpty || value == null) {
-                          return "enter username";  // validation............
-                        }
-                      }),
-                  const Align(
-                    alignment: Alignment.bottomLeft,
-                    child: AppText(
-                        text: "Enter Phone number",
-                        weight: FontWeight.w500,
-                        size: 16,
-                        textcolor: customBalck),
-                  ),
+                    
                   CustomTextField(
                       hint: "Enter Phone number",
                       controller: phone,
@@ -104,14 +72,7 @@ class _UserSignupState extends State<UserSignup> {
                           return 'Please enter mobile number';
                         }
                       }),
-                  const Align(
-                    alignment: Alignment.bottomLeft,
-                    child: AppText(
-                        text: "Enter your email",
-                        weight: FontWeight.w500,
-                        size: 16,
-                        textcolor: customBalck),
-                  ),
+                  
                   CustomTextField(
                       hint: "Enter your email",
                       controller: email,
@@ -123,14 +84,7 @@ class _UserSignupState extends State<UserSignup> {
                           return 'Enter a valid email!';
                         }
                       }),
-                  const Align(
-                    alignment: Alignment.bottomLeft,
-                    child: AppText(
-                        text: "Enter your password",
-                        weight: FontWeight.w500,
-                        size: 16,
-                        textcolor: customBalck),
-                  ),
+                  
                   CustomTextField(
                       hint: "Enter your password",
                       obscure: true,
@@ -154,7 +108,7 @@ class _UserSignupState extends State<UserSignup> {
                         textcolor: white,
                         click: () {
                           formkey.currentState!.validate();
-                          // signUp();
+                          signUp();
                         }),
                   ),
                 ]),
@@ -163,22 +117,21 @@ class _UserSignupState extends State<UserSignup> {
       ),
     );
   }
-  // Future<void> signUp() async {
-  //   print('.........................');
-  //   await FirebaseFirestore.instance.collection('users').add({
-  //     'username': username.text,
-  //     'phone': phone.text,
-  //     'email': email.text,
-  //     'password': password.text,
-  //     'status':'0',
-  //     'location':location.text
-  //   });
-  //   Navigator.pop(context);
-  //   // username.clear();
-  //   // phone.clear();
-  //   // email.clear();
-  //   // experience.clear();
-  //   // workshop.clear();
-  //   // password.clear();
-  // }
+  Future<void> signUp() async {
+    print('.........................');
+    await FirebaseFirestore.instance.collection('users').add({
+      'phone': phone.text,
+      'username': email.text,
+      'password': password.text,
+      'type':'user'
+     
+    });
+    Navigator.pop(context);
+    // username.clear();
+    // phone.clear();
+    // email.clear();
+    // experience.clear();
+    // workshop.clear();
+    // password.clear();
+  }
 }

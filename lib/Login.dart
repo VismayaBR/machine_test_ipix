@@ -9,6 +9,7 @@ import 'package:machine_test/user/signup.dart';
 import 'package:machine_test/widgets/AppText.dart';
 import 'package:machine_test/widgets/customButton.dart';
 import 'package:machine_test/widgets/customTextfield.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   Login({super.key});
@@ -64,8 +65,8 @@ class _LoginState extends State<Login> {
         });
 
         // print('.................$mechId');
-        // SharedPreferences spref = await SharedPreferences.getInstance();
-        // spref.setString('user_id', userId);
+        SharedPreferences spref = await SharedPreferences.getInstance();
+        spref.setString('user_id', userId);
         
         if (type == 'admin') {
           Fluttertoast.showToast(msg: 'Login Successful as Admin');

@@ -142,12 +142,7 @@ class _CategoryListState extends State<CategoryList> {
     });
     category.text='';
     Navigator.pop(context);
-    // username.clear();
-    // phone.clear();
-    // email.clear();
-    // experience.clear();
-    // workshop.clear();
-    // password.clear();
+ 
   }
 }
 

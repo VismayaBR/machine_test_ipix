@@ -9,18 +9,17 @@ class StockTile extends StatelessWidget {
     super.key,
     required this.image,
     required this.name,
-    required this.issue,
-    required this.date,
-    required this.time,
-    required this.place, required this.click,
+    required this.price,
+    required this.stock,
+    required this.category,
+     required this.click,
   });
 
   final String image;
   final String name;
-  final String issue;
-  final String date;
-  final String time;
-  final String place;
+  final String price;
+  final String stock;
+  final String category;
   final void Function() click;
 
   @override
@@ -42,45 +41,62 @@ class StockTile extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
+                    Image.network(
                       image,
                       width: 60.w,
                       height: 60.h,
                       fit: BoxFit.fill,
                     ),
-                    AppText(
-                        text: name,
-                        weight: FontWeight.w400,
-                        size: 14,
-                        textcolor: customBalck),
+                   
                   ],
                 ),
               ),
               Expanded(
                 child: SizedBox(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      AppText(
-                          text: issue,
-                          weight: FontWeight.w400,
-                          size: 14,
-                          textcolor: customBalck),
-                      AppText(
-                          text: date,
-                          weight: FontWeight.w400,
-                          size: 14,
-                          textcolor: customBalck),
-                      AppText(
-                          text: time,
-                          weight: FontWeight.w400,
-                          size: 14,
-                          textcolor: customBalck),
-                      AppText(
-                          text: place,
-                          weight: FontWeight.w400,
-                          size: 14,
-                          textcolor: customBalck),
+                      Row(
+                        children: [
+                          Text('Product : '),
+                          AppText(
+                              text: name,
+                              weight: FontWeight.w400,
+                              size: 14,
+                              textcolor: customBalck),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text('Price : '),
+                          AppText(
+                              text: price,
+                              weight: FontWeight.w400,
+                              size: 14,
+                              textcolor: customBalck),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text('Storck : '),
+                          AppText(
+                              text: stock,
+                              weight: FontWeight.w400,
+                              size: 14,
+                              textcolor: customBalck),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text('Category : '),
+                          AppText(
+                              text: category,
+                              weight: FontWeight.w400,
+                              size: 14,
+                              textcolor: customBalck),
+                        ],
+                      ),
                     ],
                   ),
                 ),
