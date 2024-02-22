@@ -64,7 +64,6 @@ class _LoginState extends State<Login> {
           type = userSnapshot.docs[0]['type'];
         });
 
-        // print('.................$mechId');
         SharedPreferences spref = await SharedPreferences.getInstance();
         spref.setString('user_id', userId);
         

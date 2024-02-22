@@ -60,7 +60,7 @@ class AdminHome extends StatelessWidget {
             ),
              Expanded(
                 child: TabBarView(children: [
-              // Tab bar View.......
+              // Tab bar View
               Center(child: StocksList()),
               Center(child: CategoryList())
             ]))
